@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 794px;
+            /* Approx. width of A4 at 96 DPI */
+            margin: auto;
+        }
+
+        .font-xs {
+            font-size: 8px;
+        }
+
+        .font-sm {
+            font-size: 10px;
+        }
+
+        .font-md {
+            font-size: 12px;
+        }
+
+        .font-lg {
+            font-size: 16px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 0px;
+            border-bottom: 2px solid #000;
+        }
+
+        header .left,
+        header .right {
+            text-align: center;
+        }
+
+        header .left-img {
+            width: 200px;
+            height: 160px;
+        }
+
+        header .center-svg {
+            max-width: 260px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        header .right-img {
+            width: 180px;
+            height: 50px;
+        }
+
+        header .left-img-text {
+            margin-top: 10px;
+            color: #555;
+            font-size: 8px;
+        }
+
+        /* section-1 */
+        .three-columns-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .three-columns-table td {
+            width: 30%;
+            /* Default width for first two columns */
+            vertical-align: top;
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        .three-columns-table td:last-child {
+            width: 40%;
+            /* 40% for the last column */
+        }
+
+        .three-columns-table p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        .three-columns-table strong {
+            font-weight: bold;
+        }
+
+        /* section-2 */
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        /* .main-table td */
+        .main-table,
+        .main-table th {
+            border: 1px solid;
+        }
+
+        .main-table th,
+        .main-table td {
+            padding: 5px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 10px;
+            /* Reduced font size */
+        }
+
+        /* Header row styles */
+        .main-table thead tr:first-child th {
+            /* background-color: #f3f3f3; */
+            font-size: 11px;
+            /* Slightly larger font size for headers */
+        }
+
+        .main-table th.nowrap,
+        .main-table td.nowrap {
+            white-space: nowrap;
+        }
+
+        /* Special column width adjustments */
+        .main-table tbody tr:not(:last-child) td:nth-child(4) {
+            width: 100%;
+            text-align: left;
+
+        }
+
+        .main-table th,
+        .main-table td {
+            text-align: center;
+            /* Center align for headers and rows */
+        }
+
+        /* Left align Products column */
+        .main-table th:nth-child(4) {
+            text-align: left;
+
+        }
+
+        /* Adjust IGST and Total Amount Columns */
+        .main-table td[colspan="2"],
+        .main-table th[colspan="2"] {
+            text-align: center;
+        }
+
+        .main-table tfoot td {
+            text-align: right;
+        }
+
+        .main-table tbody tr td {
+            border-left: 1px solid;
+            /* Adds vertical borders for columns */
+            border-right: 1px solid;
+            /* Adds vertical borders for columns */
+        }
+
+        .main-table tr.total-row td {
+            border-top: 1px solid;
+            /* Adds top border for the total row */
+        }
+
+
+        .no-border td {
+            border: none;
+            padding: 5px;
+        }
+
+        .align-top {
+            vertical-align: top;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        /* third section */
+
+        .header-note {
+            font-size: 8px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .payment-table {
+            border: 1px solid;
+        }
+
+        .payment-table td {
+            /* border: 1px solid #000; */
+            /* Adds table borders */
+            padding: 8px 10px;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .align-top {
+            vertical-align: top;
+        }
+
+        .disclaimer-section {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .disclaimer {
+            margin-bottom: 5px;
+        }
+
+        .disclaimer-section strong {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .license-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .license-table td {
+            padding: 2px;
+            vertical-align: top;
+        }
+
+        .right-align {
+            text-align: right;
+        }
+
+
+        .footer {
+            font-size: 12px;
+            margin-top: 24px;
+        }
+
+        .footer div {
+
+            margin-top: 4px;
+        }
+
+        @media (max-width: 600px) {
+
+            .main-table th,
+            .main-table td {
+                font-size: 6px;
+                padding: 2px;
+            }
+
+            /* Header row styles */
+            .main-table thead tr:first-child th {
+                /* background-color: #f3f3f3; */
+                font-size: 7px;
+                /* Slightly larger font size for headers */
+            }
+
+            .nowrap {
+                white-space: wrap;
+
+            }
+
+            header .left-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            header .center-svg {
+                max-width: 100px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            header .right-img {
+                width: 60px;
+                height: 40px;
+            }
+
+            header .left-img-text {
+                margin-top: 4px;
+                color: #555;
+                font-size: 4px;
+            }
+
+
+
+
+
+
+        }
+
+        /* Print media rules for A4 */
+        @media print {
+            body {
+                margin: 0;
+                padding: 10px;
+                width: 794px;
+                /* A4 width */
+                height: 1123px;
+                /* A4 height */
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            header,
+            .three-columns,
+            .main-table,
+            .footer,
+            .header-note {
+                page-break-inside: avoid;
+                /* Prevent page breaks inside sections */
+            }
+
+            .main-table td,
+            .main-table th {
+                font-size: 9px;
+                /* Reduce font size slightly for better fit */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header
+            style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000;">
+            <!-- Left: QR Code and note -->
+            <div style="text-align: center;">
+                <img src="./qrCode.png" alt="QR Code" class="left-img">
+                <p style="margin-top: 10px; color: #555;" class="left-img-text">Please pay using this QR code if not
+                    paid
+                    already.</p>
+            </div>
+
+            <!-- Center: Logo -->
+            <div style="text-align: center; flex-grow: 1;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139 31" class="center-svg">
+                    <path
+                        d="M57.98 28.94l-1.595-4.904h-.98L53.81 28.94l-1.593-4.91h-1.23l2.206 6.62h.98l1.716-4.66 1.59 4.66h.98l2.2-6.62h-1.22zM1.334 26.857h33.35v.98H1.334v-.98zm41.318-24.89h2.207v14.59h-2.21V1.967zm10.544 14.59h2.207v-6.13h7.602V8.343h-7.61V3.93h8.46V1.966h-10.66zM8.324 16.8c4.66 0 8.46-3.8 8.46-8.46 0-4.534-3.8-6.62-6.62-6.62-5.518 0-5.886 5.396-5.886 5.396h.13s.98-3.923 4.78-3.923c3.07 0 5.4 2.084 5.4 5.027 0 3.43-2.82 6.25-6.25 6.25-3.31 0-6.372-2.45-6.372-6.87 0-3.44 1.84-6.26 5.027-7.48V0C2.947.61.003 4.17.003 8.33c-.122 4.66 3.68 8.46 8.338 8.46zm36.78 10.056c-1.225-.245-1.593-.49-1.593-.98s.37-.737 1.11-.737c.62 0 1.23.24 1.72.61l.617-.85c-.613-.49-1.47-.86-2.33-.86-1.35 0-2.207.74-2.207 1.96s.73 1.6 2.2 1.96c1.22.25 1.47.49 1.47.98s-.49.86-1.1.86c-.86 0-1.47-.37-2.09-.86l-.74.86c.735.74 1.716 1.11 2.696 1.11 1.35 0 2.33-.73 2.33-1.96 0-1.35-.738-1.84-2.086-2.08zm-9.317-10.3l-4.414-5.884c2.207-.61 3.678-2.2 3.678-4.29 0-2.69-2.2-4.53-5.39-4.53h-6.38v14.59h2.2v-5.4h3.55l4.05 5.4 2.7.126zm-10.3-7.48V3.93h4.047c2.084 0 3.31.86 3.31 2.453s-1.35 2.575-3.31 2.575h-4.047zm40.706 18.76h3.31v-1.102h-3.31V25.14h3.678v-1.103h-4.78v6.498h4.78v-.98H66.2zM91.817 1.844l-6.62 14.713h2.33l1.715-3.8h7.11l1.595 3.8h2.452L93.78 1.844h-1.964zm-1.838 8.95l2.69-6.252 2.69 6.26h-5.4zm18.14-5.026l4.66 6.866.24.368.24-.36 4.536-6.86v10.79h2.207v-14.6h-2.084l-4.904 7.356-4.906-7.356h-2.08v14.59h2.085zm0 21.088h30.89v.98h-30.89v-.98zm22.19-12.383v-4.29h7.6V8.098h-7.6v-4.17h8.58v-1.96h-10.78v14.59h10.79V14.47zM98.93 28.57l-3.557-4.534H94.27v6.498h1.226v-4.536l3.55 4.536h.98v-6.498h-1.1zM72.936 1.968h-2.084v14.59h10.054v-2.084h-7.97zm13.12 25.87h3.31v-1.103h-3.31V25.14h3.677v-1.103H84.95v6.498h4.905v-.98h-3.81zm-9.197-3.8H74.4v6.497h2.453c2.083 0 3.432-1.47 3.432-3.31.122-1.717-1.35-3.188-3.434-3.188zm0 5.516h-1.35V25.14h1.35c1.35 0 2.2.98 2.2 2.206.12 1.226-.86 2.207-2.21 2.207z">
+                    </path>
+                </svg>
+            </div>
+
+            <!-- Right: Barcode with label -->
+            <div style="text-align: center;">
+                <img src="./barCode.png" alt="Barcode" class="right-img">
+                <p style="margin-top: 10px; font-size: 14px; color: #555;">B2</p>
+            </div>
+        </header>
+
+        <div style="text-align: center; margin: 8px 0px 0px 0px; font-weight: 500;" class="font-lg">Tax Invoice</div>
+
+        <table class="three-columns-table">
+            <tr>
+                <td>
+                    <p><strong>Buyer's particulars:</strong></p>
+                    <p><strong>Heena Ara</strong></p>
+                    <p>
+                        Badruddin Khan, 24, Raisulpur, Raisulpur ward no-39, Ambikapur,<br>
+                        Surguja, Chhattisgarh - 497001 Bada Damali, Ambikapur<br>
+                        Surguja, 497001
+                    </p>
+                    <p><strong>Telephone No:</strong> 8085917986</p>
+                    <p><strong>GSTIN:</strong> Not registered under GST</p>
+                    <p><strong>State Name:</strong> Chhattisgarh</p>
+                    <p><strong>State Code:</strong> CT</p>
+                </td>
+                <td>
+                    <p><strong>Serial No:</strong> 532425173093</p>
+                    <p><strong>Original Invoice Date:</strong></p>
+                    <p><strong>Order type:</strong> Internet orders</p>
+                    <p><strong>Automated Script</strong></p>
+                    <p><strong>Type of order:</strong> Consultant</p>
+                    <p><strong>BP:</strong> 10</p>
+                    <p><strong>BV:</strong> 236</p>
+                </td>
+                <td>
+                    <p>
+                        <strong>Order/Confirm Date:</strong> 31.01.2025 16:12
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Page:</strong> 1/1
+                    </p>
+                    <p><strong>Invoice Date:</strong></p>
+                    <p><strong>Original Invoice Date:</strong></p>
+                    <p><strong>Delivery:</strong> RE-CGH-PPD-TRUST-N</p>
+                    <p><strong>Delivery address:</strong></p>
+                    <p class="font-xs">
+                        Heena Ara,
+                        Ganesh nagar, chuchuhiya para, Bilaspur chhattisgarh near masjid,
+                        pincode 495001
+                        Gaya Vihar, Bilaspur 495001
+                    </p>
+                    <p><strong>Telephone No:</strong> 8085917986</p>
+                    <p><strong>Place of Supply:</strong></p>
+                    <p><strong>State Name:</strong> Chhattisgarh</p>
+                    <p><strong>State Code:</strong> CT</p>
+                </td>
+            </tr>
+        </table>
+
+
+        <div style="display: flex; gap: 3rem; justify-content: flex-end;">
+            <div>
+                <strong class="font-md">Consultant No.:</strong> <span class="font-sm">10821904</span>
+
+            </div>
+            <div>
+                <strong class="font-md"> Order placed by:</strong> <span class="font-sm">10821904</span>
+
+            </div>
+        </div>
+        <!-- Table -->
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th>Bay</th>
+                    <th>Code</th>
+                    <th class="nowrap">Qty<br>Nos</th>
+                    <th>Products</th>
+                    <th class="nowrap">HSN Code</th>
+                    <th class="nowrap">Unit Price<br>(Ex. Tax)</th>
+                    <th class="nowrap">Total Sales Price<br>(Ex. Tax)</th>
+                    <th class="nowrap">Disc.</th>
+                    <th>Loyalty Disc.*</th>
+                    <th class="nowrap">Value<br>(Ex. Tax)</th>
+                    <th colspan="2" class="center">IGST</th>
+                    <th>Total Amount*</th>
+                </tr>
+                <tr>
+                    <th colspan="10"></th>
+                    <th class="nowrap">%</th>
+                    <th class="nowrap">Amt. (Rs.)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>138116</td>
+                    <td>1</td>
+                    <td>Handling Fee</td>
+                    <td>82142090</td>
+                    <td>46.61</td>
+                    <td>46.61</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>46.61</td>
+                    <td>18.00</td>
+                    <td>8.39</td>
+                    <td>55.00</td>
+                </tr>
+                <tr>
+                    <td>99</td>
+                    <td>152306</td>
+                    <td>1</td>
+                    <td>C02 2025 Catalogue</td>
+                    <td>49111020</td>
+                    <td>27.12</td>
+                    <td>27.12</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>16.95</td>
+                    <td>18.00</td>
+                    <td>3.05</td>
+                    <td>20.00</td>
+                </tr>
+                <tr>
+                    <td>339</td>
+                    <td>44952</td>
+                    <td>1</td>
+                    <td>Optifresh Maximum Fresh Toothpaste</td>
+                    <td>33061020</td>
+                    <td>100.85</td>
+                    <td>100.85</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>100.85</td>
+                    <td>18.00</td>
+                    <td>18.15</td>
+                    <td>119.00</td>
+                </tr>
+                <tr>
+                    <td>439</td>
+                    <td>42206</td>
+                    <td>1</td>
+                    <td>Giordani Gold Essenza Perfumed Body Cream</td>
+                    <td>33049930</td>
+                    <td>372.88</td>
+                    <td>372.88</td>
+                    <td>288.98</td>
+                    <td>0.00</td>
+                    <td>83.90</td>
+                    <td>18.00</td>
+                    <td>15.10</td>
+                    <td>99.00</td>
+                </tr>
+                <tr>
+                    <td>952</td>
+                    <td>42290</td>
+                    <td>1</td>
+                    <td>Nail It Manicure Kit</td>
+                    <td>82142090</td>
+                    <td>338.14</td>
+                    <td>338.14</td>
+                    <td>67.80</td>
+                    <td>0.00</td>
+                    <td>270.34</td>
+                    <td>18.00</td>
+                    <td>48.66</td>
+                    <td>319.00</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2" style="text-align: right;"><strong>Total</strong></td>
+                    <th class="nowrap">4</th>
+                    <th colspan="3"></th>
+                    <td></td>
+                    <td class="nowrap">518.64</td>
+                    <td class="nowrap">0.00</td>
+                    <td class="nowrap">93.36</td>
+                    <td colspan="2" class="nowrap">93.00</td>
+                    <td colspan="2" class="nowrap">612.00</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="header-note">
+            Please note, the overall Loyalty Discount (LD) amount is allocated on unit level and then rounded off. In
+            some cases, one Product can be in multiple lines, with different types of LD due to such rounding off.
+        </div>
+
+        <table class="payment-table no-border">
+            <tr class="align-top">
+                <td>
+                    <strong>Payment from Consultant A/c:</strong>
+                    612.00
+                </td>
+                <td>
+                    <strong>Payment Reqd:</strong>
+                    0.00
+                </td>
+                <td>
+                    <strong>Money in Prepayment On:</strong>
+                    1293.00
+                </td>
+            </tr>
+            <tr class="align-top">
+                <td>
+                    <strong>Group BP as of last Calculation:</strong>
+                    711
+                </td>
+                <td>
+                    <strong>Due Date:</strong>
+                    24.02.2025
+                </td>
+                <td>
+                    <strong>Weight:</strong>
+                    0.606
+                </td>
+            </tr>
+        </table>
+
+        <div class="disclaimer-section">
+            <p class="disclaimer">
+                * Disclaimer: Prices have been arrived after applying relevant discounts (along with additional GST
+                discount).
+            </p>
+            <p>Billing Address:
+                <strong style="display: inline;">
+                    Prospace Industrial Park, Plot No. 2525, Mouza- Belumilki, JL No.-11, P.S.- Serampore,
+                    Distt.-Hooghly,
+                    West Bengal, 712223</strong>
+            </p>
+        </div>
+
+        <table class="license-table">
+            <tr>
+                <td colspan="2">
+                    <div class="font-lg"> FSSAI License no. 10014011001805. Applicable for food products only.</div>
+                    <div style="display: flex; gap: 50px; margin-top:8px">
+                        <div class="font-sm">For Oriflame India Pvt. Ltd.</div>
+                        <div class="font-lg">
+                            <strong>GSTIN:</strong> 19AAACC0256B1ZX
+                        </div>
+                    </div>
+                </td>
+                <td colspan="2" class="right-align">
+                    Original: For Recipient<br>
+                    Duplicate: For Transporter<br>
+                    Triplicate: For Supplier
+                </td>
+            </tr>
+        </table>
+        <p style="font-style: italic; margin-top: 6px;">Authorized Signatory</p>
+        <div class="footer">
+            <div><strong>
+
+                    India Private Limited, M-10, Ground Floor, South Extension, Part – II, New Delhi-110049
+                </strong>
+            </div>
+            <div class="font-sm">
+                Phone +91 1143665500 Customer Care +91 11-40409000, +91 11-66259000; www.oriflame.co.in; Email:
+                contactcenter.india@oriflame.com</div>
+            <div><strong>Note: Unless otherwise stated, tax on this invoice is not payable under reverse charge.
+
+                </strong>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
