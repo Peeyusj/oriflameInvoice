@@ -103,7 +103,7 @@
         .main-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 2px;
+            margin-bottom: 20px;
         }
 
         /* .main-table td */
@@ -134,7 +134,7 @@
         }
 
         /* Special column width adjustments */
-        .main-table tbody tr:not(:last-child) td:nth-child(3) {
+        .main-table tbody tr:not(:last-child) td:nth-child(4) {
             width: 100%;
             text-align: left;
 
@@ -147,7 +147,7 @@
         }
 
         /* Left align Products column */
-        .main-table th:nth-child(3) {
+        .main-table th:nth-child(4) {
             text-align: left;
 
         }
@@ -224,6 +224,32 @@
             vertical-align: top;
         }
 
+        .disclaimer-section {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .disclaimer {
+            margin-bottom: 5px;
+        }
+
+        .disclaimer-section strong {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .license-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .license-table td {
+            padding: 2px;
+            vertical-align: top;
+        }
+
         .right-align {
             text-align: right;
         }
@@ -237,11 +263,6 @@
         .footer div {
 
             margin-top: 4px;
-        }
-
-        .main-table-footer-note p {
-            line-height: 1.5;
-            margin: 2px 0px;
         }
 
         @media (max-width: 600px) {
@@ -292,6 +313,11 @@
         @media print {
             body {
                 margin: 0;
+                padding: 10px;
+                width: 794px;
+                /* A4 width */
+                height: 1123px;
+                /* A4 height */
             }
 
             .container {
@@ -314,6 +340,15 @@
 
             .left-img-text {
                 font-size: 6px;
+            }
+
+            header,
+            .three-columns,
+            .main-table,
+            .footer,
+            .header-note {
+                page-break-inside: avoid;
+                /* Prevent page breaks inside sections */
             }
 
             .main-table td,
@@ -346,8 +381,8 @@
 
                 <!-- Right: Barcode and Label -->
                 <td style="width: 30%;">
-                    <!-- <img src="./barCode.png" alt="Barcode" class="right-img"> -->
-                    <p style="font-size: 14px; color: #555;">B0</p>
+                    <img src="./barCode.png" alt="Barcode" class="right-img">
+                    <p style="font-size: 14px; color: #555;">B2</p>
                 </td>
             </tr>
         </table>
@@ -356,39 +391,38 @@
 
         <table class="three-columns-table">
             <tr>
-                <td style="padding-left:0px;">
-                    <p><strong>Bill-to Address:</strong></p>
+                <td>
+                    <p><strong>Buyer's particulars:</strong></p>
                     <p><strong>Heena Ara</strong></p>
                     <p>
                         Badruddin Khan, 24, Raisulpur, Raisulpur ward no-39, Ambikapur,<br>
                         Surguja, Chhattisgarh - 497001 Bada Damali, Ambikapur<br>
                         Surguja, 497001
                     </p>
+                    <p><strong>Telephone No:</strong> 8085917986</p>
                     <p><strong>GSTIN:</strong> Not registered under GST</p>
                     <p><strong>State Name:</strong> Chhattisgarh</p>
                     <p><strong>State Code:</strong> CT</p>
-                    <p><strong>Billing Address:</strong>
-                        Prospace Industrial Park, Plot No. 2525, Mouza- Belumilki, JL No.-11, P.S.- Serampore,
-                        Distt.-Hooghly,
-                        West Bengal, 712223
-                    </p>
-                    <p><strong>Supplier GSTIN:</strong> 09AAACO0256B1ZY</p>
                 </td>
                 <td>
-                    <p><strong>Invoice No:</strong> 532425173093</p>
-                    <p><strong>Invoice Date:</strong> 31.01.2025</p>
-                    <p><strong>Original Invoice Date:</strong> 31.01.2025</p>
-                    <p style="margin-top: 24px;"><strong>Original:</strong> For Recipient</p>
-                    <p><strong>Duplicate:</strong> For Transporter</p>
-                    <p><strong>Triplicate:</strong> For Supplier</p>
+                    <p><strong>Serial No:</strong> 532425173093</p>
+                    <p><strong>Original Invoice Date:</strong></p>
+                    <p><strong>Order type:</strong> Internet orders</p>
+                    <p><strong>Automated Script</strong></p>
+                    <p><strong>Type of order:</strong> Consultant</p>
+                    <p><strong>BP:</strong> 10</p>
+                    <p><strong>BV:</strong> 236</p>
                 </td>
-                <td style="padding-right:0px;">
-                    <p style="display: flex; justify-content: space-between;">
-                        <strong>Ship-to Address:</strong>
-                        <span>
-                            <strong>Page:</strong> 1/1
-                        </span>
+                <td>
+                    <p>
+                        <strong>Order/Confirm Date:</strong> 31.01.2025 16:12
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Page:</strong> 1/1
                     </p>
+                    <p><strong>Invoice Date:</strong></p>
+                    <p><strong>Original Invoice Date:</strong></p>
+                    <p><strong>Delivery:</strong> RE-CGH-PPD-TRUST-N</p>
+                    <p><strong>Delivery address:</strong></p>
                     <p class="font-xs">
                         Heena Ara,
                         Ganesh nagar, chuchuhiya para, Bilaspur chhattisgarh near masjid,
@@ -404,31 +438,35 @@
         </table>
 
 
-        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+        <div style="display: flex; gap: 3rem; justify-content: flex-end;">
             <div>
-                <strong class="font-md">Brand Partner ID:</strong> <span class="font-sm">10821904</span>
+                <strong class="font-md">Consultant No.:</strong> <span class="font-sm">10821904</span>
+
             </div>
             <div>
                 <strong class="font-md"> Order placed by:</strong> <span class="font-sm">10821904</span>
+
             </div>
         </div>
         <!-- Table -->
         <table class="main-table">
             <thead>
                 <tr>
+                    <th>Bay</th>
                     <th>Code</th>
-                    <th class="nowrap">Qty</th>
+                    <th class="nowrap">Qty<br>Nos</th>
                     <th>Products</th>
                     <th class="nowrap">HSN Code</th>
                     <th class="nowrap">Unit Price<br>(Ex. Tax)</th>
                     <th class="nowrap">Total Sales Price<br>(Ex. Tax)</th>
                     <th class="nowrap">Disc.</th>
+                    <th>Loyalty Disc.*</th>
                     <th class="nowrap">Value<br>(Ex. Tax)</th>
                     <th colspan="2" class="center">IGST</th>
                     <th>Total Amount*</th>
                 </tr>
                 <tr>
-                    <th colspan="8"></th>
+                    <th colspan="10"></th>
                     <th class="nowrap">%</th>
                     <th class="nowrap">Amt. (Rs.)</th>
                     <th></th>
@@ -436,6 +474,7 @@
             </thead>
             <tbody>
                 <tr>
+                    <td>0</td>
                     <td>138116</td>
                     <td>1</td>
                     <td>Handling Fee</td>
@@ -443,12 +482,14 @@
                     <td>46.61</td>
                     <td>46.61</td>
                     <td>0.00</td>
+                    <td>0.00</td>
                     <td>46.61</td>
                     <td>18.00</td>
                     <td>8.39</td>
                     <td>55.00</td>
                 </tr>
                 <tr>
+                    <td>99</td>
                     <td>152306</td>
                     <td>1</td>
                     <td>C02 2025 Catalogue</td>
@@ -456,12 +497,14 @@
                     <td>27.12</td>
                     <td>27.12</td>
                     <td>0.00</td>
+                    <td>0.00</td>
                     <td>16.95</td>
                     <td>18.00</td>
                     <td>3.05</td>
                     <td>20.00</td>
                 </tr>
                 <tr>
+                    <td>339</td>
                     <td>44952</td>
                     <td>1</td>
                     <td>Optifresh Maximum Fresh Toothpaste</td>
@@ -469,12 +512,14 @@
                     <td>100.85</td>
                     <td>100.85</td>
                     <td>0.00</td>
+                    <td>0.00</td>
                     <td>100.85</td>
                     <td>18.00</td>
                     <td>18.15</td>
                     <td>119.00</td>
                 </tr>
                 <tr>
+                    <td>439</td>
                     <td>42206</td>
                     <td>1</td>
                     <td>Giordani Gold Essenza Perfumed Body Cream</td>
@@ -482,12 +527,14 @@
                     <td>372.88</td>
                     <td>372.88</td>
                     <td>288.98</td>
+                    <td>0.00</td>
                     <td>83.90</td>
                     <td>18.00</td>
                     <td>15.10</td>
                     <td>99.00</td>
                 </tr>
                 <tr>
+                    <td>952</td>
                     <td>42290</td>
                     <td>1</td>
                     <td>Nail It Manicure Kit</td>
@@ -495,52 +542,107 @@
                     <td>338.14</td>
                     <td>338.14</td>
                     <td>67.80</td>
+                    <td>0.00</td>
                     <td>270.34</td>
                     <td>18.00</td>
                     <td>48.66</td>
                     <td>319.00</td>
                 </tr>
                 <tr class="total-row">
-                    <td colspan="1" style="text-align: right;"><strong>Total</strong></td>
+                    <td colspan="2" style="text-align: right;"><strong>Total</strong></td>
                     <th class="nowrap">4</th>
                     <th colspan="3"></th>
                     <td></td>
                     <td class="nowrap">518.64</td>
+                    <td class="nowrap">0.00</td>
                     <td class="nowrap">93.36</td>
                     <td colspan="2" class="nowrap">93.00</td>
                     <td colspan="2" class="nowrap">612.00</td>
+
                 </tr>
             </tbody>
         </table>
 
-        <div class="main-table-footer-note font-sm">
-            <p style="font-weight: bold;">
-                Note: Unless otherwise stated, tax on this invoice is not payable under reverse charge.
-            </p>
+        <div class="header-note">
+            Please note, the overall Loyalty Discount (LD) amount is allocated on unit level and then rounded off. In
+            some cases, one Product can be in multiple lines, with different types of LD due to such rounding off.
+        </div>
+
+        <table class="payment-table no-border">
+            <tr class="align-top">
+                <td>
+                    <strong>Payment from Consultant A/c:</strong>
+                    612.00
+                </td>
+                <td>
+                    <strong>Payment Reqd:</strong>
+                    0.00
+                </td>
+                <td>
+                    <strong>Money in Prepayment On:</strong>
+                    1293.00
+                </td>
+            </tr>
+            <tr class="align-top">
+                <td>
+                    <strong>Group BP as of last Calculation:</strong>
+                    711
+                </td>
+                <td>
+                    <strong>Due Date:</strong>
+                    24.02.2025
+                </td>
+                <td>
+                    <strong>Weight:</strong>
+                    0.606
+                </td>
+            </tr>
+        </table>
+
+        <div class="disclaimer-section">
             <p class="disclaimer">
-                * Disclaimer: Prices have been arrived after applying relevant discounts (Along with additional GST
-                discount)
+                * Disclaimer: Prices have been arrived after applying relevant discounts (along with additional GST
+                discount).
+            </p>
+            <p>Billing Address:
+                <strong style="display: inline;">
+                    Prospace Industrial Park, Plot No. 2525, Mouza- Belumilki, JL No.-11, P.S.- Serampore,
+                    Distt.-Hooghly,
+                    West Bengal, 712223</strong>
             </p>
         </div>
 
-        <!-- Signatory -->
-        <div style="margin-top: 48px;">
-            <p class="font-sm" style="margin: 0px;">For Oriflame India Pvt. Ltd.</p>
-            <p style="font-style: italic; font-weight: 600; margin-top: 6px;">Authorized Signatory</p>
-        </div>
-
+        <table class="license-table">
+            <tr>
+                <td colspan="2">
+                    <div class="font-lg"> FSSAI License no. 10014011001805. Applicable for food products only.</div>
+                    <div style="display: flex; gap: 50px; margin-top:8px">
+                        <div class="font-sm">For Oriflame India Pvt. Ltd.</div>
+                        <div class="font-lg">
+                            <strong>GSTIN:</strong> 19AAACC0256B1ZX
+                        </div>
+                    </div>
+                </td>
+                <td colspan="2" class="right-align">
+                    Original: For Recipient<br>
+                    Duplicate: For Transporter<br>
+                    Triplicate: For Supplier
+                </td>
+            </tr>
+        </table>
+        <p style="font-style: italic; margin-top: 6px;">Authorized Signatory</p>
         <div class="footer">
-            <div>
-                <strong>
-                    Reg Office:
-                </strong>
-                India Private Limited, M-10, Ground Floor, South Extension, Part – II, New Delhi-110049
-            </div>
-            <div class="font-sm"> FSSAI License no. 10014011001805. Applicable for food products only.</div>
+            <div><strong>
 
+                    India Private Limited, M-10, Ground Floor, South Extension, Part – II, New Delhi-110049
+                </strong>
+            </div>
             <div class="font-sm">
-                Phone +91 1143665500 Customer Care +91 11-66259000; www.oriflame.co.in; Email:
-                contactcenter.india@oriflame.com; CIN: U74899DL1994PTC061083
+                Phone +91 1143665500 Customer Care +91 11-40409000, +91 11-66259000; www.oriflame.co.in; Email:
+                contactcenter.india@oriflame.com</div>
+            <div><strong>Note: Unless otherwise stated, tax on this invoice is not payable under reverse charge.
+
+                </strong>
             </div>
         </div>
     </div>
